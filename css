@@ -1,0 +1,51 @@
+:root {
+    --primary: #1E90FF;
+    --dark: #121212;
+    --grey: #f4f7f6;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background-color: var(--grey);
+    color: #333;
+}
+
+.sidebar .nav-link {
+    border-radius: 10px;
+    padding: 12px 18px;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+    background: var(--primary);
+    color: #fff !important;
+    box-shadow: 0 4px 12px rgba(30, 144, 255, 0.3);
+}
+
+.dash-tab {
+    animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    border-radius: 20px;
+    border: none;
+}
+
+.badge {
+    padding: 8px 12px;
+    border-radius: 6px;
+}
