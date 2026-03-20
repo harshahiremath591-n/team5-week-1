@@ -83,6 +83,7 @@ class SparkFlowManager {
         }
     }
 
+    // Load Dashboard with user data
     loadDashboard(user) {
         // Map data to UI
         document.getElementById('dashUserName').innerText = user.name;
@@ -103,14 +104,26 @@ class SparkFlowManager {
         document.getElementById('auth-container').classList.add('d-none');
     }
 
-    // Management Logic (Old Code Integrated)
+    // Management Logic
     addElectrician() {
         const name = document.getElementById('eName').value;
         const phone = document.getElementById('ePhone').value;
         if (!name || !phone) return alert("Input details!");
 
         const id = "ELC-" + Math.floor(100 + Math.random() * 899);
-        const row = `<tr><td>#${id}</td><td>${name}</td><td>${phone}</td><td><span class="badge bg-success">Active</span></td><td><button class="btn btn-sm btn-outline-danger" onclick="this.closest('tr').remove()"><i class="fas fa-trash"></i></button></td></tr>`;
+        const row = `
+        <tr>
+            <td>#${id}</td>
+            <td class="eName">${name}</td>
+            <td class="ePhone">${phone}</td>
+            <td><span class="badge bg-success">Active</span></td>
+            <td>
+                <button class="btn btn-sm btn-outline-warning me-1" onclick="app.editElectrician(this)"><i class="fas fa-edit"></i></button>
+                <button class="btn btn-sm btn-outline-success me-1 d-none" onclick="app.saveElectrician(this)"><i class="fas fa-check"></i></button>
+                <button class="btn btn-sm btn-outline-danger" onclick="this.closest('tr').remove()"><i class="fas fa-trash"></i></button>
+            </td>
+        </tr>
+        `;
 
         document.getElementById('elecTableBody').insertAdjacentHTML('beforeend', row);
 
@@ -118,7 +131,33 @@ class SparkFlowManager {
         modal.hide();
     }
 
-    // Reporting Logic (New Smart Update)
+    // Edit Electrician row
+    editElectrician(btn) {
+        const row = btn.closest('tr');
+        const nameCell = row.querySelector('.eName');
+        const phoneCell = row.querySelector('.ePhone');
+
+        nameCell.innerHTML = `<input type="text" class="form-control form-control-sm" value="${nameCell.innerText}">`;
+        phoneCell.innerHTML = `<input type="text" class="form-control form-control-sm" value="${phoneCell.innerText}">`;
+
+        btn.classList.add('d-none');
+        row.querySelector('.btn-outline-success').classList.remove('d-none');
+    }
+
+    // Save edited row
+    saveElectrician(btn) {
+        const row = btn.closest('tr');
+        const nameCell = row.querySelector('.eName input');
+        const phoneCell = row.querySelector('.ePhone input');
+
+        row.querySelector('.eName').innerText = nameCell.value;
+        row.querySelector('.ePhone').innerText = phoneCell.value;
+
+        btn.classList.add('d-none');
+        row.querySelector('.btn-outline-warning').classList.remove('d-none');
+    }
+
+    // Reporting Logic
     renderLogs() {
         const body = document.getElementById('loginHistoryBody');
         body.innerHTML = [...this.allLogins].reverse().map(log => `
@@ -142,7 +181,10 @@ class SparkFlowManager {
         a.click();
     }
 
-    logout() { if (confirm("Confirm Logout?")) location.reload(); }
+    logout() { 
+        if (confirm("Confirm Logout?")) location.reload(); 
+    }
 }
 
+// Initialize app
 const app = new SparkFlowManager();

@@ -138,27 +138,29 @@
                                 </tr>
                             </thead>
                             <tbody id="elecTableBody">
-                                <tr>
-                                    <td>707</td>
-                                    <td>Dhivya</td>
-                                    <td>123456789</td>
-                                    <td><span class="badge bg-success">Active</span></td>
-                                    <td><button class="btn btn-sm btn-outline-danger"
-                                            onclick="this.closest('tr').remove()"><i class="fas fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tbody id="elecTableBody">
-                                <tr>
-                                    <td>392</td>
-                                    <td>Harsha</td>
-                                    <td>123456789</td>
-                                    <td><span class="badge bg-success">Active</span></td>
-                                    <td><button class="btn btn-sm btn-outline-danger"
-                                            onclick="this.closest('tr').remove()"><i class="fas fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                            </tbody>
+                              <tr>
+                                  <td>#707</td>
+                                  <td class="eName">Dhivya</td>
+                                  <td class="ePhone">123456789</td>
+                                  <td><span class="badge bg-success">Active</span></td>
+                                  <td>
+                                      <button class="btn btn-sm btn-outline-warning me-1" onclick="app.editElectrician(this)"><i class="fas fa-edit"></i></button>
+                                      <button class="btn btn-sm btn-outline-success me-1 d-none" onclick="app.saveElectrician(this)"><i class="fas fa-check"></i></button>
+                                      <button class="btn btn-sm btn-outline-danger" onclick="this.closest('tr').remove()"><i class="fas fa-trash"></i></button>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>#392</td>
+                                  <td class="eName">Harsha</td>
+                                  <td class="ePhone">123456789</td>
+                                  <td><span class="badge bg-success">Active</span></td>
+                                  <td>
+                                      <button class="btn btn-sm btn-outline-warning me-1" onclick="app.editElectrician(this)"><i class="fas fa-edit"></i></button>
+                                      <button class="btn btn-sm btn-outline-success me-1 d-none" onclick="app.saveElectrician(this)"><i class="fas fa-check"></i></button>
+                                      <button class="btn btn-sm btn-outline-danger" onclick="this.closest('tr').remove()"><i class="fas fa-trash"></i></button>
+                                  </td>
+                              </tr>
+                          </tbody>
                         </table>
                     </div>
 
